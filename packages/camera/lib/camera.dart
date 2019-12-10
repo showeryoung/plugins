@@ -445,8 +445,12 @@ class CameraController extends ValueNotifier<CameraValue> {
       throw CameraException(e.code, e.message);
     }
 
-    await _imageStreamSubscription.cancel();
+    _imageStreamSubscription.cancel();
     _imageStreamSubscription = null;
+  }
+
+  Future<void> zoom(double zoomFactor) async {
+    await _channel.invokeMethod<void>('zoom', <String, dynamic>{'zoomFactor': zoomFactor});
   }
 
   /// Start a video recording and save the file to [path].
