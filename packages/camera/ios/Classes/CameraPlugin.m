@@ -276,15 +276,9 @@ FourCharCode const videoFormat = kCVPixelFormatType_32BGRA;
   if (zoomFactor < 1.0f || zoomFactor > _captureDevice.maxAvailableVideoZoomFactor) {
     return;
   }
-  dispatch_async(dispatch_queue_create("fun.baiyan.camera.zoom", DISPATCH_QUEUE_SERIAL),
-  ^{
-    [_captureDevice lockForConfiguration:NULL];
-    [_captureDevice setVideoZoomFactor:zoomFactor];
-    [_captureDevice unlockForConfiguration];
-  });
-  //[_captureDevice lockForConfiguration:NULL];
-  //[_captureDevice setVideoZoomFactor:zoomFactor];
-  //[_captureDevice unlockForConfiguration];
+  [_captureDevice lockForConfiguration:NULL];
+  [_captureDevice setVideoZoomFactor:zoomFactor];
+  [_captureDevice unlockForConfiguration];
 }
 
 - (void)captureToFile:(NSString *)path result:(FlutterResult)result {
