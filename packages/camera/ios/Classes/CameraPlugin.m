@@ -883,7 +883,7 @@ FourCharCode const videoFormat = kCVPixelFormatType_32BGRA;
   } else if ([@"zoom" isEqualToString:call.method]) {
     float zoomFactor = ((NSNumber*)call.arguments[@"zoomFactor"]).floatValue;
     [_camera zoom:zoomFactor];
-    return(nil);
+    result(nil);
   } else if ([@"pauseVideoRecording" isEqualToString:call.method]) {
     [_camera pauseVideoRecording];
     result(nil);
