@@ -123,6 +123,15 @@ final class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
           }
           break;
         }
+      case "zoom":
+        {
+          try {
+            // TODO:Need to implement it.
+            result.success(null);
+          } catch (Exception e) {
+            handleException(e, result);
+          }
+        }
       case "dispose":
         {
           if (camera != null) {
