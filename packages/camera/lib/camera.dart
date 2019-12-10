@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:async' as prefix0;
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
@@ -446,12 +445,8 @@ class CameraController extends ValueNotifier<CameraValue> {
       throw CameraException(e.code, e.message);
     }
 
-    _imageStreamSubscription.cancel();
+    await _imageStreamSubscription.cancel();
     _imageStreamSubscription = null;
-  }
-
-  Future<void> zoom(double zoomFactor) async {
-    await _channel.invokeMethod<void>('zoom', <String, dynamic>{'zoomFactor': zoomFactor});
   }
 
   /// Start a video recording and save the file to [path].

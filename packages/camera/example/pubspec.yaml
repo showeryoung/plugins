@@ -1,5 +1,6 @@
 name: camera_example
 description: Demonstrates how to use the camera plugin.
+author: Flutter Team <flutter-dev@googlegroups.com>
 
 dependencies:
   camera:

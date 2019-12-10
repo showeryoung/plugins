@@ -272,15 +272,6 @@ FourCharCode const videoFormat = kCVPixelFormatType_32BGRA;
   [_captureSession stopRunning];
 }
 
-- (void)zoom:(float)zoomFactor {
-  if (zoomFactor < 1.0f || zoomFactor > _captureDevice.maxAvailableVideoZoomFactor) {
-    return;
-  }
-  [_captureDevice lockForConfiguration:NULL];
-  [_captureDevice setVideoZoomFactor:zoomFactor];
-  [_captureDevice unlockForConfiguration];
-}
-
 - (void)captureToFile:(NSString *)path result:(FlutterResult)result {
   AVCapturePhotoSettings *settings = [AVCapturePhotoSettings photoSettings];
   if (_resolutionPreset == max) {
@@ -879,10 +870,6 @@ FourCharCode const videoFormat = kCVPixelFormatType_32BGRA;
     result(nil);
   } else if ([@"stopImageStream" isEqualToString:call.method]) {
     [_camera stopImageStream];
-    result(nil);
-  } else if ([@"zoom" isEqualToString:call.method]) {
-    float zoomFactor = ((NSNumber*)call.arguments[@"zoomFactor"]).floatValue;
-    [_camera zoom:zoomFactor];
     result(nil);
   } else if ([@"pauseVideoRecording" isEqualToString:call.method]) {
     [_camera pauseVideoRecording];
